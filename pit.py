@@ -4,7 +4,10 @@ from othello.OthelloGame import OthelloGame
 from othello.OthelloPlayers import *
 from othello.pytorch.NNet import NNetWrapper as NNet
 
-
+# from tictactoe.TicTacToeGame import TicTacToeGame
+# from tictactoe.keras.NNet import NNetWrapper as nn
+# from tictactoe.TicTacToePlayers import *
+    
 import numpy as np
 from utils import *
 

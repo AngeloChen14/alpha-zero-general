@@ -23,7 +23,7 @@ class Arena():
         self.game = game
         self.display = display
 
-    def playGame(self, verbose=False):
+    def playGame(self, verbose=True):
         """
         Executes one episode of a game.
 
@@ -53,7 +53,7 @@ class Arena():
             board, curPlayer = self.game.getNextState(board, curPlayer, action)
         if verbose:
             assert(self.display)
-            print("Game over: Turn ", str(it), "Result ", str(self.game.getGameEnded(board, 1)))
+            print("Game over: Turn ", str(it), "Result ", str(curPlayer*self.game.getGameEnded(board, 1)))
             self.display(board)
         return curPlayer*self.game.getGameEnded(board, curPlayer)
 

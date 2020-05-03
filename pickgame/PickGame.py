@@ -9,7 +9,7 @@ import numpy as np
 Game class implementation for the game of PickGame.
 Based on the OthelloGame then getGameEnded() was adapted to new rules.
 
-Author: Angelo CHen, github.com/AngeloChen14
+Author: Angelo Chen, github.com/AngeloChen14
 Date: May 1, 2020.
 
 Based on the OthelloGame by Surag Nair.
@@ -96,8 +96,6 @@ class PickGame(Game):
         else:
             assert(np.sum(b.pieces)==1 or np.sum(b.pieces)==0) 
             if np.sum(b.pieces)==1:
-            #     return -player #仅剩一子 当前玩家为输家
-            # return player   #棋盘无子 当前玩家为赢家
                 return -1 #仅剩一子 当前玩家为输家
             return 1   #棋盘无子 当前玩家为赢家
 

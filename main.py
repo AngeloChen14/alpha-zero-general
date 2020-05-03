@@ -1,7 +1,3 @@
-# from Coach import Coach
-# from othello.OthelloGame import OthelloGame as Game
-# from othello.pytorch.NNet import NNetWrapper as nn
-# from utils import *ddd
 from Coach import Coach
 from pickgame.PickGame import PickGame
 from pickgame.keras.NNet import NNetWrapper as nn
@@ -18,7 +14,7 @@ args = dotdict({
 
     'checkpoint': './temp/',
     'load_model': False,
-    'load_folder_file': ('/dev/models/8x100x50','best.pth.tar'),
+    'load_folder_file': ('./temp','best.pth.tar'),
     'numItersForTrainExamplesHistory': 20,
 
 })

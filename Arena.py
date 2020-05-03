@@ -42,6 +42,7 @@ class Arena():
             it+=1
             if verbose:
                 assert(self.display)
+                if it==1:print()
                 print("Turn ", str(it), "Player ", str(curPlayer))
                 self.display(board,action)
             action = players[curPlayer+1](self.game.getCanonicalForm(board, curPlayer))
@@ -93,7 +94,6 @@ class Arena():
             bar.suffix  = '({eps}/{maxeps}) Eps Time: {et:.3f}s | Total: {total:} | ETA: {eta:}'.format(eps=eps, maxeps=maxeps, et=eps_time.avg,
                                                                                                        total=bar.elapsed_td, eta=bar.eta_td)
             bar.next()
-            print()
 
         self.player1, self.player2 = self.player2, self.player1
         
@@ -112,7 +112,6 @@ class Arena():
             bar.suffix  = '({eps}/{maxeps}) Eps Time: {et:.3f}s | Total: {total:} | ETA: {eta:}'.format(eps=eps, maxeps=maxeps, et=eps_time.avg,
                                                                                                        total=bar.elapsed_td, eta=bar.eta_td)
             bar.next()
-            print()
             
         bar.finish()
 

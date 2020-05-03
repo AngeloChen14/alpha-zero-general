@@ -3,7 +3,7 @@ from pickgame.PickGame import PickGame
 from pickgame.keras.NNet import NNetWrapper as nn
 from utils import *
 args = dotdict({
-    'numIters': 50,
+    'numIters': 5,
     'numEps': 100,              # Number of complete self-play games to simulate during a new iteration.
     'tempThreshold': 15,        #
     'updateThreshold': 0.55,     # During arena playoff, new neural net will be accepted if threshold or more of games are won.
@@ -20,7 +20,7 @@ args = dotdict({
 })
 
 if __name__ == "__main__":
-    g = PickGame(4)
+    g = PickGame(5)
     nnet = nn(g)
 
     if args.load_model:

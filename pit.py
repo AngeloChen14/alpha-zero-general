@@ -11,11 +11,11 @@ use this script to play any two agents against each other, or play manually with
 any agent.
 """
 #choose player, both set to Flase -> cpu vs cpu 
-human_vs_cpu = False
+human_vs_cpu = True
 random_vs_cpu = False
 
 #choose number of games to play
-num_to_play = 10     
+num_to_play = 2     
 
 #choose size of board, must be same as model loaded below
 g = PickGame(4)
@@ -38,7 +38,7 @@ else:
         player2 = rp
     else:
         n2 = NNet(g)
-        n2.load_checkpoint('./temp', 'checkpoint_41.pth.tar')
+        n2.load_checkpoint('./temp', 'temp.pth.tar')
         args2 = dotdict({'numMCTSSims': 50, 'cpuct': 1.0})
         mcts2 = MCTS(g, n2, args2)
         n2p = lambda x: np.argmax(mcts2.getActionProb(x, temp=0))
@@ -46,4 +46,4 @@ else:
 
 arena = Arena.Arena(n1p, player2, g, display=PickGame.display)
 
-print(arena.playGames(num_to_play, verbose=False))
+print(arena.playGames(num_to_play, verbose=True))

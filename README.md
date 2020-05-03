@@ -4,21 +4,6 @@ An implementation of a simple game provided to check extendability of the framew
 
 ```Coach.py``` contains the core training loop and ```MCTS.py``` performs the Monte Carlo Tree Search. The parameters for the self-play can be specified in ```main.py```. Additional neural network parameters are in ```pickgame/keras/NNet.py``` (cuda flag, batch size, epochs, learning rate etc.). 
 
-
-To train a model for PickGame, change the imports in ```main.py``` to (already changed):
-```python
-from Coach import Coach
-from pickgame.PickGame import PickGame
-from pickgame.keras.NNet import NNetWrapper as nn
-from utils import *
- ```
-
-and the first line of ```__main__``` to
-```python
-g = PickeGame(n)
-```
- Make similar changes to ```pit.py```.
-
 To start training a model for PickGame:
 ```bash
 python main.py

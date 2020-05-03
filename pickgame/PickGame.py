@@ -38,8 +38,7 @@ class PickGame(Game):
             return (board, -player)
         b = Board(self.n)
         b.pieces = np.copy(board)
-        # if int(action/self.n), action%self.n
-        # move = (int(action/self.n), action%self.n) #从action到move的反编码，很麻烦
+        #从action到move的反编码，很麻烦
         if action<self.n*self.n:
             move = (int(action/self.n), int(action%self.n),int(action/self.n), int(action%self.n))
         else:
@@ -127,14 +126,14 @@ class PickGame(Game):
         return board.tostring()
 
     @staticmethod
-    def display(board):
+    def display(board,action):
         n = board.shape[0]
 
-        print("   ", end="")
+        print(" y ", end="")
         for y in range(n):
-            print (y+1,"", end="")
+            print (y+1,"", end="")  # print the column #
         print("")
-        print("  ", end="")
+        print("x ", end="")
         for _ in range(n):
             print ("-", end="-")
         print("--")
@@ -155,3 +154,29 @@ class PickGame(Game):
         for _ in range(n):
             print ("-", end="-")
         print("--")
+
+        if action<n*n:
+            move = (int(action/n+1), int(action%n+1),int(action/n+1), int(action%n+1))
+        else:
+            if(action<n*n*(n+1)/2):
+                x1=int((action-n*n)/((n*n-n)/2))
+                x2=x1
+                res=(action-n*n)%((n*(n-1))/2)
+                for i in range(n):
+                    if res<(2*n-i-2)*(i+1)/2:
+                        y1=i
+                        y2=n+res-(2*n-i-2)*(i+1)/2
+                        move=(int(x1+1),int(y1+1),int(x2+1),int(y2+1))
+                        break
+            else:
+                y1=int((action-n*n*(n+1)/2)/((n*n-n)/2))
+                y2=y1
+                res=(action-n*n*(n+1)/2)%((n*(n-1))/2)
+                for i in range(n):
+                    if res<(2*n-i-2)*(i+1)/2:
+                        x1=i
+                        x2=n+res-(2*n-i-2)*(i+1)/2
+                        move=(int(x1+1),int(y1+1),int(x2+1),int(y2+1))
+                        break
+        if action >=0: #取消首局输出
+            print("Last move:",move)

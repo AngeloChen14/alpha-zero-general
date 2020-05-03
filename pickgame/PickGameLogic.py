@@ -8,7 +8,7 @@ Board data:
      pieces[2][0] is the bottom left square,
 Squares are stored and manipulated as (x,y) tuples.
 
-Author: Angelo CHen, github.com/AngeloChen14
+Author: Angelo Chen, github.com/AngeloChen14
 Date: May 1, 2020.
 
 Based on the board for the game of Othello by Eric P. Nichols.

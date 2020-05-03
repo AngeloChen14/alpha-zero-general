@@ -3,7 +3,7 @@ import numpy as np
 """
 Random and Human-ineracting players for the game of PickGame.
 
-Author: Angelo CHen, github.com/AngeloChen14
+Author: Angelo Chen, github.com/AngeloChen14
 Date: May 1, 2020.
 
 Based on the OthelloPlayers by Surag Nair.
@@ -28,10 +28,8 @@ class HumanPickGamePlayer():
     def play(self, board):
         # display(board)
         valid = self.game.getValidMoves(board, 1)
-        # for i in range(len(valid)):
-        #     if valid[i]:
-        #         print(int(i/self.game.n), int(i%self.game.n))
         while True: 
+            print("Pleae input your move (top left->bottom right): x1 y1 x2 y2")
             input_move = input()
             a = input_move.split(" ")
             if len(a) == 4:

@@ -37,12 +37,13 @@ class Arena():
         curPlayer = 1
         board = self.game.getInitBoard()
         it = 0
+        action = -1
         while self.game.getGameEnded(board, curPlayer)==0:
             it+=1
             if verbose:
                 assert(self.display)
                 print("Turn ", str(it), "Player ", str(curPlayer))
-                self.display(board)
+                self.display(board,action)
             action = players[curPlayer+1](self.game.getCanonicalForm(board, curPlayer))
 
             valids = self.game.getValidMoves(self.game.getCanonicalForm(board, curPlayer),1)
@@ -54,7 +55,7 @@ class Arena():
         if verbose:
             assert(self.display)
             print("Game over: Turn ", str(it), "Result ", str(curPlayer*self.game.getGameEnded(board, 1)))
-            self.display(board)
+            self.display(board,action)
         return curPlayer*self.game.getGameEnded(board, curPlayer)
 
     def playGames(self, num, verbose=False):
@@ -92,6 +93,7 @@ class Arena():
             bar.suffix  = '({eps}/{maxeps}) Eps Time: {et:.3f}s | Total: {total:} | ETA: {eta:}'.format(eps=eps, maxeps=maxeps, et=eps_time.avg,
                                                                                                        total=bar.elapsed_td, eta=bar.eta_td)
             bar.next()
+            print()
 
         self.player1, self.player2 = self.player2, self.player1
         
@@ -110,6 +112,7 @@ class Arena():
             bar.suffix  = '({eps}/{maxeps}) Eps Time: {et:.3f}s | Total: {total:} | ETA: {eta:}'.format(eps=eps, maxeps=maxeps, et=eps_time.avg,
                                                                                                        total=bar.elapsed_td, eta=bar.eta_td)
             bar.next()
+            print()
             
         bar.finish()
 

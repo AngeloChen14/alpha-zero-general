@@ -134,14 +134,14 @@ class PickGame(Game):
 
         print("   ", end="")
         for y in range(n):
-            print (y,"", end="")
+            print (y+1,"", end="")
         print("")
         print("  ", end="")
         for _ in range(n):
             print ("-", end="-")
         print("--")
         for y in range(n):
-            print(y, "|",end="")    # print the row #
+            print(y+1, "|",end="")    # print the row #
             for x in range(n):
                 piece = board[y][x]    # get the piece to print,0表示无棋子，显示0
                 if piece == 1: print("1 ",end="")

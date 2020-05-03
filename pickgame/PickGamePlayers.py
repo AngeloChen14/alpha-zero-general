@@ -37,6 +37,7 @@ class HumanPickGamePlayer():
             if len(a) == 4:
                 try:
                     x1,y1,x2,y2 = [int(x) for x in a]
+                    x1-=1;y1-=1;x2-=1;y2-=1
                     if (0 <= x1) and (x1 < self.game.n) and (0 <= y1) and (y1 < self.game.n) and \
                          (0 <= x2) and (x2 < self.game.n) and (0 <= y2) and (y2 < self.game.n) and (x1==x2 or y1==y2):
                         if(x1==x2 and y1==y2):

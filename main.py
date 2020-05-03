@@ -1,7 +1,7 @@
 # from Coach import Coach
 # from othello.OthelloGame import OthelloGame as Game
 # from othello.pytorch.NNet import NNetWrapper as nn
-# from utils import *
+# from utils import *ddd
 from Coach import Coach
 from pickgame.PickGame import PickGame
 from pickgame.keras.NNet import NNetWrapper as nn

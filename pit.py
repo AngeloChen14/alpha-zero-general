@@ -18,7 +18,7 @@ random_vs_cpu = False
 num_to_play = 2     
 
 #choose size of board, must be same as model loaded below
-g = PickGame(4)
+g = PickGame(3)
 
 # all players
 rp = RandomPlayer(g).play
@@ -26,7 +26,8 @@ hp = HumanPickGamePlayer(g).play
 
 # nnet players
 n1 = NNet(g)
-n1.load_checkpoint('./pretrained_models/pickgame/keras','4x4-best.pth.tar')
+# n1.load_checkpoint('./pretrained_models/pickgame/keras','4x4-best.pth.tar')
+n1.load_checkpoint('./temp', 'temp.pth.tar')
 args1 = dotdict({'numMCTSSims': 50, 'cpuct':1.0})
 mcts1 = MCTS(g, n1, args1)
 n1p = lambda x: np.argmax(mcts1.getActionProb(x, temp=0))

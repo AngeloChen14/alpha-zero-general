@@ -106,19 +106,40 @@ class PickGame(Game):
         return board
 
     def getSymmetries(self, board, pi):
-        assert(len(pi) == self.n**3+1)  # 1 for pass 
-        # pi_board = np.reshape(pi[:-1], (self.n, self.n)) #这里应该是把pi对应到棋盘上再旋转，有点棘手，棋盘旋转后策略空间都变了
-        # l = []
+        assert(len(pi) == self.n**3+1)  # 1 for pass
+        n=self.n
+        pi_board = np.reshape(pi[:n**2], (n, n)) #前n^2项映射到棋盘跟着转即可
+        pi_row=np.reshape(pi[n**2:int(n**2*(n+1)/2)],(n,int(n*(n-1)/2))) #行和列需要根据编码规则特殊处理
+        pi_column=np.reshape(pi[int(n**2*(n+1)/2):n**3],(n,int(n*(n-1)/2)))
+        pi_row_flip=np.copy(pi_row)
+        pi_column_flip=np.copy(pi_column)
+        l = []
 
-        # for i in range(1, 5):
-        #     for j in [True, False]:
-        #         newB = np.rot90(board, i)
-        #         newPi = np.rot90(pi_board, i)
-        #         if j:
-        #             newB = np.fliplr(newB)
-        #             newPi = np.fliplr(newPi)
-        #         l += [(newB, list(newPi.ravel()) + [pi[-1]])]
-        l = [(board,pi)]
+        for i in range(1, 5):
+            newB = np.rot90(board, i)
+            newPi_board = np.rot90(pi_board, i)
+            pi_row_old=np.copy(pi_row)
+            for k in range(n):                   
+                pi_row[k,:]=pi_column[n-k-1,:]
+            for x in range(n):
+                for y in range(n):
+                    if x<y:
+                        pi_column[:,int(n*x-x*(x+3)/2+y-1)]=pi_row_old[:,int(n*(n-y-1)-(n-y-1)*(n-y+2)/2+n-x-2)]
+            for j in [True, False]:               
+                if j:
+                    newB_flip = np.fliplr(newB)
+                    newPi_board_flip = np.fliplr(newPi_board)
+                    pi_column_old=np.copy(pi_column)
+                    pi_row_old=np.copy(pi_row)
+                    for k in range(n):                   
+                        pi_column_flip[k,:]=pi_column_old[n-k-1,:]
+                    for x in range(n):
+                        for y in range(n):
+                            if x<y:
+                                pi_row_flip[:,int(n*x-x*(x+3)/2+y-1)]=pi_row_old[:,int(n*(n-y-1)-(n-y-1)*(n-y+2)/2+n-x-2)]
+                    l += [(newB_flip, list(newPi_board_flip.ravel())+list(pi_row_flip.ravel())+list(pi_column_flip.ravel()) + [pi[-1]])]
+                else:
+                    l += [(newB, list(newPi_board.ravel())+list(pi_row.ravel())+list(pi_column.ravel()) + [pi[-1]])]
         return l
 
     def stringRepresentation(self, board):

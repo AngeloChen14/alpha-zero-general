@@ -18,7 +18,7 @@ random_vs_cpu = False
 num_to_play = 2     
 
 #choose size of board, must be same as model loaded below
-g = PickGame(3)
+g = PickGame(4)
 
 # all players
 rp = RandomPlayer(g).play

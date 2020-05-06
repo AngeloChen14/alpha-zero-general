@@ -106,6 +106,7 @@ class PickGame(Game):
         return board
 
     def getSymmetries(self, board, pi):
+        # return mirror, rotational board and pi
         assert(len(pi) == self.n**3+1)  # 1 for pass
         n=self.n
         pi_board = np.reshape(pi[:n**2], (n, n)) #前n^2项映射到棋盘跟着转即可

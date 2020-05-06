@@ -14,13 +14,16 @@ args = dotdict({
 
     'checkpoint': './temp/',
     'load_model': False,
-    'load_folder_file': ('./temp','best.pth.tar'),
+    'load_folder_file': ('./temp','temp.pth.tar'),
     'numItersForTrainExamplesHistory': 20,  # Number of iters history to train the neural networks.
 
 })
 
 if __name__ == "__main__":
-    g = PickGame(4)
+    
+    #choose size of board 
+    g = PickGame(4) 
+
     nnet = nn(g)
 
     if args.load_model:

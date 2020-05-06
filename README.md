@@ -18,7 +18,7 @@ You can choose players of the game (human / random / model) by switching flags i
 ### Environment Requirement
 Python3, NumPy, Keras Library, CUDA Toolkit (optional)
 ### Experiments
-I trained a Keras model for 4x4 PickGame (50 iterations, 100 episodes, 10 epochs per iteration and 50 MCTS simulations per turn). This took about 14 hours on an i5-8250U with MX150 CUDA. The pretrained model (Keras) can be found in ```pretrained_models/pickgame/keras/```. You can play a game against it using ```pit.py```. 
+I trained a Keras model for 4x4 PickGame (45 iterations, 100 episodes, 10 epochs per iteration and 50 MCTS simulations per turn). This took about 40 hours on an i5-8250U with MX150 CUDA. The pretrained model (Keras) can be found in ```pretrained_models/pickgame/keras/```. You can play a game against it using ```pit.py```. 
 
 ### Contributors and Credits
 * [Angelo Chen](https://github.com/AngeloChen14)
